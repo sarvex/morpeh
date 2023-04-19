@@ -211,6 +211,10 @@ namespace Scellecs.Morpeh {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsEmpty(this Filter filter) {
             filter.world.ThreadSafetyCheck();
+            
+            if (filter.archetypes.length == 0) {
+                return true;
+            }
 
             foreach (var arch in filter.archetypes) {
                 if (arch.usedInNative) {
